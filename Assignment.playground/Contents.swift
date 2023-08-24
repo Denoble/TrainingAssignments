@@ -54,8 +54,16 @@ import UIKit
   Class is the encapsulation of the definition of an object, including its properties and functonality in a unit block of code
  */
 // 11. Diff b/w Struct and Class
+ /*class objects are reference type,  2 instances of same object of a class point to same memory stored in the heap while struct objects are value type, 2 instances of a struct point to 2 different locations in the stack memory
+
+  */
 
 // 12. Diff b/w array , dict  Set
+/**
+    Array is a data structure / a collection used to stored data in ordered manner
+    Dictionary is a data structure /a collection used to store data in key -value manner
+     Set is a data structure  that does not allow duplicate element
+ */
 
 
 
@@ -63,19 +71,66 @@ import UIKit
 
 //1 remvoe duplicate chars from a String
     // input : "aabbccdd" : output : abcd
+   let input = "aabbccdd"
+   var output = ""
+  var set = Set<Character>()
+for char in  input{
+    if(!set.contains(char)){
+        set.insert(char)
+        output.append(char)
+    }
+}
+print(output)
+  
 
 // 2. remove duplidate elemetn from an array
     
     // input : [1,2,2,3,4,7,5,5]
     // output = [1,2,3,4,7]
-
+ let inputArray =  [1,2,2,3,4,7,5,5]
+var outputArray:[Int] = []
+var arraySet = Set<Int>()
+for i in  inputArray{
+    if(!arraySet.contains(i)){
+        arraySet.insert(i)
+        outputArray.append(i)
+    }
+}
+print(outputArray)
 
 // 3. Create a class of Student with 4 attributes and 3 actions
+class Student{
+    let name:String
+    let id:Int
+    let department:String
+    let faculty:String
+    init(_name:String,_id:Int,_department:String,_faculty:String){
+       name =  _name
+       id =  _id
+       department = _department
+        faculty = _faculty
+    }
+    func registereCourse(id:String){
+        
+    }
+    func withdrawCourse(id:String){}
+    func viewGrades(id:String){}
+}
 
 // 4. create array of 10 students objects and iterate through array and print all each student name
+var students:[Student] = []
+for i in 0 ... 9{
+    let temp = Student(_name: "student \(i)", _id: i,
+                       _department: "computer science", _faculty:"science")
+    students.append(temp)
+}
+for std in students{
+    print(std.name)
+}
 
 // 5. Create Optional variable and show use of optional binding.
-
+var street:String? = nil
+print( street ?? "Manhanttan")
 
 
 
