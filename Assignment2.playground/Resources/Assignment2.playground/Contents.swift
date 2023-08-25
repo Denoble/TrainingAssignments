@@ -5,10 +5,7 @@ import UIKit
 // Interview Questions (Theory)
 
 // 1.  what is initilizers, use with example
-
-// 1.  what is initilizers, use with example
         //Initializers are special function that are used to initialize the properties of a class when the class is instantiated
-
     
 // 2. what is protocol extension -> using the extension key word and implementing the body of the protocol function so that classes,structs and enum implementing the protocol do not have to implement all the functions or properties of the protocol
 // 3. What is class extension -> A way to add functionality to a class without inheriting from the class
