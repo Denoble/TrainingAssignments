@@ -1,6 +1,6 @@
-
 data class Cordinate(val x: Int, val y: Int)
 data class Position(val cor: Cordinate, val description: Char)
+val robotScent = HashMap<Cordinate,Robot>()
 class Robot( initCordinate:Cordinate,
              position: Position,
              instruction:String) {
@@ -11,6 +11,7 @@ class Robot( initCordinate:Cordinate,
         for (char in instruction){
             move(char)
         }
+        printCordinate(this)
     }
     fun positonFromCordinate(position: Position){
         when(position.description){
@@ -53,15 +54,12 @@ class Robot( initCordinate:Cordinate,
             }
 
             'F' -> {
-                val newX = curPosition.cor.x + 1
-                val cordinate = Cordinate(newX,curPosition.cor.y)
-                curPosition = Position( cordinate,curPosition.description)
-            }
-
-            'B' -> {
-                val newX = curPosition.cor.x - 1
-                val cordinate = Cordinate(newX,curPosition.cor.y)
-                curPosition = Position( cordinate,curPosition.description)
+                if(!robotScent.contains(curPosition.cor)){
+                    val newX = curPosition.cor.x + 1
+                    val cordinate = Cordinate(newX,curPosition.cor.y)
+                    curPosition = Position( cordinate,curPosition.description)
+                    if(curPosition.cor.x > 50)robotScent.put(curPosition.cor,this)
+                }
             }
 
             else -> {
@@ -111,11 +109,19 @@ class Robot( initCordinate:Cordinate,
             else->{}
         }
     }
+    fun printCordinate(robot: Robot){
+        if(robot.curPosition.cor.x < 0 || robot.curPosition.cor.x > 50 ){
+            println(" ${robot.curPosition.cor.x} ${robot.curPosition.cor.y} " +
+                    "${robot.curPosition.description} LOST")
+        }else{
+            println(" ${robot.curPosition.cor.x} ${robot.curPosition.cor.y} " +
+                    "${robot.curPosition.description}")
+        }
+    }
 }
 fun main(args:Array<String>){
     val cordinate = Cordinate(5,3)
     val position = Position(Cordinate(1,1),'E')
     val robot = Robot(cordinate,position,"RFRFRFRF")
-    println(" ${robot.curPosition.cor.x} ${robot.curPosition.cor.y} " +
-            "${robot.curPosition.description}")
+
 }
