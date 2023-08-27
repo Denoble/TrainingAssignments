@@ -5,7 +5,6 @@ class Robot( initCordinate:Cordinate,
              position: Position,
              instruction:String) {
     var curPosition :Position
-
     init {
         curPosition = Position(initCordinate,' ')
     }
@@ -42,11 +41,11 @@ class Robot( initCordinate:Cordinate,
     fun move(instruction: Char) {
         when (instruction) {
             'L' -> {
-                changeOrientation('L',curPosition)
+                changeOrientation('L')
             }
 
             'R' -> {
-                changeOrientation('R',curPosition)
+                changeOrientation('R')
             }
 
             'F' -> {
@@ -77,7 +76,7 @@ class Robot( initCordinate:Cordinate,
         }
     }
     private fun orientationHelper(instruct:Char,
-                                     orientation:Char){
+                                  orientation:Char){
         val tempInstruct = "$instruct$orientation"
         when(tempInstruct){
             "LE"->{
