@@ -69,14 +69,14 @@ class Robot( initCordinate:Cordinate,
 
     }
 
-    private fun changeOrientation(orientation:Char,new:Position) {
+    private fun changeOrientation(orientation:Char) {
         when(orientation){
-            'L' ->{}
-            'R' ->{}
+            'L' ->{orientationHelper(orientation,curPosition.description)}
+            'R' ->{orientationHelper(orientation,curPosition.description)}
             else ->{}
         }
     }
-    private fun funOrientationHelper(instruct:Char,
+    private fun orientationHelper(instruct:Char,
                                      orientation:Char){
         val tempInstruct = "$instruct$orientation"
         when(tempInstruct){
