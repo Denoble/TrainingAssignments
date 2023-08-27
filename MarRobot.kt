@@ -7,6 +7,10 @@ class Robot( initCordinate:Cordinate,
     var curPosition :Position
     init {
         curPosition = Position(initCordinate,' ')
+        positonFromCordinate(position)
+        for (char in instruction){
+            move(char)
+        }
     }
     fun positonFromCordinate(position: Position){
         when(position.description){
@@ -14,26 +18,26 @@ class Robot( initCordinate:Cordinate,
                 val newX= curPosition.cor.x +position.cor.x
                 val newY =  position.cor.y
                 val cordinate = Cordinate(newX,newY)
-                curPosition = Position( cordinate,' ')
+                curPosition = Position( cordinate,position.description)
             }
             'W' ->{
                 val newX= curPosition.cor.x - position.cor.x
                 val newY =  position.cor.y
                 val cordinate = Cordinate(newX,newY)
-                curPosition = Position( cordinate,' ')
+                curPosition = Position( cordinate,position.description)
 
             }
             'S' ->{
                 val newX= position.cor.x
                 val newY = curPosition.cor.y - position.cor.y
                 val cordinate = Cordinate(newX,newY)
-                curPosition = Position( cordinate,' ')
+                curPosition = Position( cordinate,position.description)
             }
             'N' ->{
                 val newX= position.cor.x
                 val newY = curPosition.cor.y + position.cor.y
                 val cordinate = Cordinate(newX,newY)
-                curPosition = Position( cordinate,' ')
+                curPosition = Position( cordinate,position.description)
             }
             else->{}
         }
@@ -70,8 +74,11 @@ class Robot( initCordinate:Cordinate,
 
     private fun changeOrientation(orientation:Char) {
         when(orientation){
-            'L' ->{orientationHelper(orientation,curPosition.description)}
-            'R' ->{orientationHelper(orientation,curPosition.description)}
+            'L' ->{orientationHelper(orientation,curPosition.description)
+
+            }
+            'R' ->{orientationHelper(orientation,curPosition.description)
+            }
             else ->{}
         }
     }
@@ -106,7 +113,9 @@ class Robot( initCordinate:Cordinate,
     }
 }
 fun main(args:Array<String>){
-    val initialCordinateArgs = args[1]
-    val  orientationArgs = args[2]
-    val instructionArgs = args[3]
+    val cordinate = Cordinate(5,3)
+    val position = Position(Cordinate(1,1),'E')
+    val robot = Robot(cordinate,position,"RFRFRFRF")
+    println(" ${robot.curPosition.cor.x} ${robot.curPosition.cor.y} " +
+            "${robot.curPosition.description}")
 }
