@@ -1,29 +1,66 @@
-class Robot {
-    var positionState = Position(0, 0, 0)
-        private set
-    private val x
-        get() = positionState
 
+data class Cordinate(val x: Int, val y: Int)
+data class Position(val cor: Cordinate, val description: Char)
+class Robot( initCordinate:Cordinate,
+             position: Position,
+             instruction:String) {
+    var curPosition :Position
+
+    init {
+        curPosition = Position(initCordinate,' ')
+    }
+    fun positonFromCordinate(position: Position){
+        when(position.description){
+            'E' ->{
+                val newX= curPosition.cor.x +position.cor.x
+                val newY =  position.cor.y
+                val cordinate = Cordinate(newX,newY)
+                curPosition = Position( cordinate,' ')
+            }
+            'W' ->{
+                val newX= curPosition.cor.x - position.cor.x
+                val newY =  position.cor.y
+                val cordinate = Cordinate(newX,newY)
+                curPosition = Position( cordinate,' ')
+
+            }
+            'S' ->{
+                val newX= position.cor.x
+                val newY = curPosition.cor.y - position.cor.y
+                val cordinate = Cordinate(newX,newY)
+                curPosition = Position( cordinate,' ')
+            }
+            'N' ->{
+                val newX= position.cor.x
+                val newY = curPosition.cor.y + position.cor.y
+                val cordinate = Cordinate(newX,newY)
+                curPosition = Position( cordinate,' ')
+            }
+            else->{}
+        }
+    }
     fun move(instruction: Char) {
         when (instruction) {
             'L' -> {
-                changePosition(-90, 0, 0)
+                changeOrientation('L',curPosition)
             }
 
             'R' -> {
-                changePosition(90, 0, 0)
+                changeOrientation('R',curPosition)
             }
 
             'F' -> {
-                changePosition(0, 1, 0)
+                val newX = curPosition.cor.x + 1
+                val cordinate = Cordinate(newX,curPosition.cor.y)
+                curPosition = Position( cordinate,curPosition.description)
             }
 
             'B' -> {
-                changePosition(0, -1, 0)
+                val newX = curPosition.cor.x - 1
+                val cordinate = Cordinate(newX,curPosition.cor.y)
+                curPosition = Position( cordinate,curPosition.description)
             }
 
-            'S' -> {}
-            'N' -> {}
             else -> {
                 print("Wrong instruction")
             }
@@ -32,19 +69,45 @@ class Robot {
 
     }
 
-    private fun changePosition(degree: Int, distancex: Int, distancey: Int) {
-        var newOrientation = (positionState.orientation + (degree))
-        if (newOrientation < 0) newOrientation = 270
-        else {
-            newOrientation = newOrientation % 360
+    private fun changeOrientation(orientation:Char,new:Position) {
+        when(orientation){
+            'L' ->{}
+            'R' ->{}
+            else ->{}
         }
-        val x = distancex + positionState.x
-        val y = distancey + positionState.y
-        positionState = Position(
-            x,
-            y, newOrientation
-        )
+    }
+    private fun funOrientationHelper(instruct:Char,
+                                     orientation:Char){
+        val tempInstruct = "$instruct$orientation"
+        when(tempInstruct){
+            "LE"->{
+                curPosition = Position(curPosition.cor,'N')
+            }
+            "LW" ->{
+                curPosition = Position(curPosition.cor,'S')
+            }
+            "LS" ->{
+                curPosition = Position(curPosition.cor,'E')
+            }
+            "LN" ->{ curPosition = Position(curPosition.cor,'W')}
+            "RE"->{
+                curPosition = Position(curPosition.cor,'S')
+            }
+            "RS"->{
+                curPosition = Position(curPosition.cor,'W')
+            }
+            "RW"->{
+                curPosition = Position(curPosition.cor,'N')
+            }
+            "RN"->{
+                curPosition = Position(curPosition.cor,'E')
+            }
+            else->{}
+        }
     }
 }
-
-data class Position(val x: Int, val y: Int, val orientation: Int)
+fun main(args:Array<String>){
+    val initialCordinateArgs = args[1]
+    val  orientationArgs = args[2]
+    val instructionArgs = args[3]
+}
