@@ -17,6 +17,7 @@
 		2FA7E3982A979D2700B52E2D /* TechConsultingProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3972A979D2700B52E2D /* TechConsultingProjectUITestsLaunchTests.swift */; };
 		2FA7E3A42A97B07700B52E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3782A979D2200B52E2D /* ViewController.swift */; };
 		2FA7E3A52A97B07700B52E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3782A979D2200B52E2D /* ViewController.swift */; };
+		2FABC2482A9D34E800AD16C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FABC2472A9D34E700AD16C5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2FA7E3912A979D2700B52E2D /* TechConsultingProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TechConsultingProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA7E3952A979D2700B52E2D /* TechConsultingProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechConsultingProjectUITests.swift; sourceTree = "<group>"; };
 		2FA7E3972A979D2700B52E2D /* TechConsultingProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechConsultingProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2FABC2472A9D34E700AD16C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		2FA7E3682A979D2100B52E2D = {
 			isa = PBXGroup;
 			children = (
+				2FABC2472A9D34E700AD16C5 /* Main.storyboard */,
 				2FA7E3732A979D2100B52E2D /* TechConsultingProject */,
 				2FA7E38A2A979D2700B52E2D /* TechConsultingProjectTests */,
 				2FA7E3942A979D2700B52E2D /* TechConsultingProjectUITests */,
@@ -230,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FABC2482A9D34E800AD16C5 /* Main.storyboard in Resources */,
 				2FA7E3812A979D2600B52E2D /* LaunchScreen.storyboard in Resources */,
 				2FA7E37E2A979D2600B52E2D /* Assets.xcassets in Resources */,
 			);
