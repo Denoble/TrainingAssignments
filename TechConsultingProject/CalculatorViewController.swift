@@ -13,7 +13,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var buttonC: UIButton!
     @IBOutlet weak var display: UILabel!
     var curValue:Int64 = 0
-    
+    var isDouble = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +23,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func buttonCancelOnclick(_ sender: Any) {
+        display.text = "0"
     }
     
     @IBAction func buttonDivisionOnclick(_ sender: Any) {
@@ -54,6 +55,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func button3Onclick(_ sender: Any) {
     }
     @IBAction func buttonPeriodOnclick(_ sender: Any) {
+        isDouble = !isDouble
     }
     @IBAction func button0Onclick(_ sender: Any) {
     }
