@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F9BF4E42A9EC48700772B32 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */; };
 		2FA7E3752A979D2200B52E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3742A979D2100B52E2D /* AppDelegate.swift */; };
 		2FA7E3772A979D2200B52E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3762A979D2200B52E2D /* SceneDelegate.swift */; };
 		2FA7E3792A979D2200B52E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3782A979D2200B52E2D /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		2FA7E3712A979D2100B52E2D /* TechConsultingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechConsultingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA7E3742A979D2100B52E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA7E3762A979D2200B52E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				2FABC2472A9D34E700AD16C5 /* Main.storyboard */,
+				2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */,
 				2FA7E3732A979D2100B52E2D /* TechConsultingProject */,
 				2FA7E38A2A979D2700B52E2D /* TechConsultingProjectTests */,
 				2FA7E3942A979D2700B52E2D /* TechConsultingProjectUITests */,
@@ -262,6 +265,7 @@
 			files = (
 				2FA7E3792A979D2200B52E2D /* ViewController.swift in Sources */,
 				2FA7E3752A979D2200B52E2D /* AppDelegate.swift in Sources */,
+				2F9BF4E42A9EC48700772B32 /* CalculatorViewController.swift in Sources */,
 				2FA7E3772A979D2200B52E2D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
