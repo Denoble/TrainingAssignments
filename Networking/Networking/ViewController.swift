@@ -33,7 +33,8 @@ class ViewController: UIViewController,UITableViewDataSource {
             }
             
             cell.title.text = products[indexPath.item].title
-            cell.price.text = String(products[indexPath.item].price)
+            cell.price.text = "$\(products[indexPath.item].price)"
+            cell.itemDescription.text = products[indexPath.item].description
         }
         return cell
     }
