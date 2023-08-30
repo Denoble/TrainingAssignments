@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var name: UITextField!
+    let admin = "Admin"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,6 +20,9 @@ class ViewController: UIViewController {
 
 
     @IBAction func onLoginButtonClicked(_ sender: Any) {
+        if name.text == admin && password.text == admin {
+            performSegue(withIdentifier: "toTableView", sender: self)
+        }
     }
 }
 

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F6EB2A22A9F662D006BEA93 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6EB2A12A9F662D006BEA93 /* Student.swift */; };
+		2F6EB2A42A9F677B006BEA93 /* woman-6242836_640.png 16-44-44-325.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6EB2A32A9F677B006BEA93 /* woman-6242836_640.png 16-44-44-325.png */; };
 		2F9BF4E42A9EC48700772B32 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */; };
+		2F9BF4E62A9ED56600772B32 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BF4E52A9ED56600772B32 /* TableViewController.swift */; };
+		2F9BF4E82A9ED59500772B32 /* TableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BF4E72A9ED59500772B32 /* TableCellTableViewCell.swift */; };
 		2FA7E3752A979D2200B52E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3742A979D2100B52E2D /* AppDelegate.swift */; };
 		2FA7E3772A979D2200B52E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3762A979D2200B52E2D /* SceneDelegate.swift */; };
 		2FA7E3792A979D2200B52E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7E3782A979D2200B52E2D /* ViewController.swift */; };
@@ -39,7 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F6EB2A12A9F662D006BEA93 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		2F6EB2A32A9F677B006BEA93 /* woman-6242836_640.png 16-44-44-325.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woman-6242836_640.png 16-44-44-325.png"; sourceTree = "<group>"; };
 		2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		2F9BF4E52A9ED56600772B32 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		2F9BF4E72A9ED59500772B32 /* TableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellTableViewCell.swift; sourceTree = "<group>"; };
 		2FA7E3712A979D2100B52E2D /* TechConsultingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechConsultingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA7E3742A979D2100B52E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA7E3762A979D2200B52E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +91,10 @@
 		2FA7E3682A979D2100B52E2D = {
 			isa = PBXGroup;
 			children = (
+				2F6EB2A12A9F662D006BEA93 /* Student.swift */,
 				2FABC2472A9D34E700AD16C5 /* Main.storyboard */,
+				2F9BF4E52A9ED56600772B32 /* TableViewController.swift */,
+				2F9BF4E72A9ED59500772B32 /* TableCellTableViewCell.swift */,
 				2F9BF4E32A9EC48700772B32 /* CalculatorViewController.swift */,
 				2FA7E3732A979D2100B52E2D /* TechConsultingProject */,
 				2FA7E38A2A979D2700B52E2D /* TechConsultingProjectTests */,
@@ -108,6 +119,7 @@
 				2FA7E3742A979D2100B52E2D /* AppDelegate.swift */,
 				2FA7E3762A979D2200B52E2D /* SceneDelegate.swift */,
 				2FA7E3782A979D2200B52E2D /* ViewController.swift */,
+				2F6EB2A32A9F677B006BEA93 /* woman-6242836_640.png 16-44-44-325.png */,
 				2FA7E37D2A979D2600B52E2D /* Assets.xcassets */,
 				2FA7E37F2A979D2600B52E2D /* LaunchScreen.storyboard */,
 				2FA7E3822A979D2600B52E2D /* Info.plist */,
@@ -239,6 +251,7 @@
 				2FABC2482A9D34E800AD16C5 /* Main.storyboard in Resources */,
 				2FA7E3812A979D2600B52E2D /* LaunchScreen.storyboard in Resources */,
 				2FA7E37E2A979D2600B52E2D /* Assets.xcassets in Resources */,
+				2F6EB2A42A9F677B006BEA93 /* woman-6242836_640.png 16-44-44-325.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +279,9 @@
 				2FA7E3792A979D2200B52E2D /* ViewController.swift in Sources */,
 				2FA7E3752A979D2200B52E2D /* AppDelegate.swift in Sources */,
 				2F9BF4E42A9EC48700772B32 /* CalculatorViewController.swift in Sources */,
+				2F9BF4E62A9ED56600772B32 /* TableViewController.swift in Sources */,
+				2F9BF4E82A9ED59500772B32 /* TableCellTableViewCell.swift in Sources */,
+				2F6EB2A22A9F662D006BEA93 /* Student.swift in Sources */,
 				2FA7E3772A979D2200B52E2D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
