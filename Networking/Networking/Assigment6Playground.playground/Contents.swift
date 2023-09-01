@@ -17,7 +17,7 @@ class Employee{
             
     }
    
-    private func getInstance() {
+    private func getInstance() -> Employee {
       
         do{
             try createInstance()
@@ -25,6 +25,7 @@ class Employee{
         }catch{
             print("\(error)")
         }
+        return Employee()
     }
     private func createInstance() throws {
         if Employee.numberOfCreatedObjects > 2 {
