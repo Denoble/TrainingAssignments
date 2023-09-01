@@ -28,44 +28,6 @@ struct Product: Decodable {
 
 typealias Products = [Product?]
 
-/*struct ExampleJson2KtSwift: Codable {
-
-  var productId        : String? = nil
-  var productName      : String? = nil
-  var shortDescription : String? = nil
-  var price            : Double? = nil
-  var productImage     : String? = nil
-  var inStock          : Bool?   = nil
-
-  enum CodingKeys: String, CodingKey {
-
-    case productId        = "productId"
-    case productName      = "productName"
-    case shortDescription = "shortDescription"
-    case price            = "price"
-    case productImage     = "productImage"
-    case inStock          = "inStock"
-  
-  }
-
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-
-    productId        = try values.decodeIfPresent(String.self , forKey: .productId        )
-    productName      = try values.decodeIfPresent(String.self , forKey: .productName      )
-    shortDescription = try values.decodeIfPresent(String.self , forKey: .shortDescription )
-    price            = try values.decodeIfPresent(Double.self , forKey: .price            )
-    productImage     = try values.decodeIfPresent(String.self , forKey: .productImage     )
-    inStock          = try values.decodeIfPresent(Bool.self   , forKey: .inStock          )
- 
-  }
-
-  init() {
-
-  }
-
-}*/
-
 
 func fetchData(url:String) async throws -> Data {
     guard let url = URL(string: url) else {
@@ -83,7 +45,6 @@ func fetchData(url:String) async throws -> Data {
 }
 
 func save(url:String, toFilename filename: String)async throws -> Bool{
-    
     var data:Data?
     do{
         try data = await fetchData(url: url)
