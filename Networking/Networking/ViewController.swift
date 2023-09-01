@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductTableViewCell
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as? ProductTableViewCell ?? ProductTableViewCell()
         if products.count > 0 {
             if   let url = URL(string: products[indexPath.item].thumbnail){
                 cell.imageUI.load(url: url)
