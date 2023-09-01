@@ -34,26 +34,20 @@
                                                         <constraint firstAttribute="height" constant="70" id="ynq-gU-jsu"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4do-5A-bPK">
-                                                    <rect key="frame" x="81" y="17" width="19" height="12"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="title">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="system" size="10"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4do-5A-bPK">
+                                                    <rect key="frame" x="81" y="17" width="18" height="12"/>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvC-wU-g1g">
-                                                    <rect key="frame" x="343.5" y="17" width="24.5" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <rect key="frame" x="344" y="17" width="24" height="11.5"/>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Oh-2C-F6V">
-                                                    <rect key="frame" x="78" y="32" width="313" height="107"/>
+                                                    <rect key="frame" x="78" y="31.5" width="313" height="107.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" systemColor="labelColor"/>
@@ -62,13 +56,13 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hvC-wU-g1g" firstAttribute="firstBaseline" secondItem="4do-5A-bPK" secondAttribute="firstBaseline" id="8AK-qy-vz4"/>
                                                 <constraint firstItem="tBH-mE-LSL" firstAttribute="leading" secondItem="hdi-8E-BMf" secondAttribute="leading" constant="5" id="E2a-sM-OPd"/>
                                                 <constraint firstItem="2Oh-2C-F6V" firstAttribute="leading" secondItem="tBH-mE-LSL" secondAttribute="trailing" constant="3" id="Kj0-fv-Lor"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Oh-2C-F6V" secondAttribute="trailing" constant="3" id="NMa-29-7uQ"/>
                                                 <constraint firstItem="4do-5A-bPK" firstAttribute="top" secondItem="hdi-8E-BMf" secondAttribute="topMargin" constant="6" id="Uid-Oi-UIY"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hvC-wU-g1g" secondAttribute="trailing" constant="6" id="YEa-YH-Lda"/>
                                                 <constraint firstAttribute="bottom" secondItem="tBH-mE-LSL" secondAttribute="bottom" constant="5" id="aeO-Gr-EYT"/>
+                                                <constraint firstItem="hvC-wU-g1g" firstAttribute="firstBaseline" secondItem="4do-5A-bPK" secondAttribute="firstBaseline" id="bpK-Ov-TJb"/>
                                                 <constraint firstItem="hvC-wU-g1g" firstAttribute="top" secondItem="hdi-8E-BMf" secondAttribute="topMargin" constant="6" id="cSb-Oh-bNC"/>
                                                 <constraint firstItem="2Oh-2C-F6V" firstAttribute="top" secondItem="hvC-wU-g1g" secondAttribute="bottom" constant="3" id="d2t-iI-E0c"/>
                                                 <constraint firstItem="4do-5A-bPK" firstAttribute="leading" secondItem="tBH-mE-LSL" secondAttribute="trailing" constant="6" id="exb-2e-gqX"/>

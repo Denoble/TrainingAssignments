@@ -17,7 +17,7 @@ class Employee{
             
     }
    
-    private func getInstance() -> Employee {
+    private func getInstance()throws -> Employee {
         var emp:Employee?
       
         do{
@@ -26,7 +26,7 @@ class Employee{
             print("\(error)")
         }
         guard let _emp = emp else{
-            exit(0)
+            throw InstantiationError.capacityExhausted
         }
         return _emp
     }
@@ -92,3 +92,22 @@ for i in 0 ... 4 {
 //viewDidDisappear -> The view is removed from the screen, where to perform clean-up tasks, pause animation and save data
 
 // ==============
+
+
+// MARK: - WelcomeClass
+struct WelcomeClass: Codable {
+    let productID, productName, shortDescription: String
+    let price: Double
+    let productImage: String
+    let inStock: Bool?
+    let reviewRating: Double?
+    let reviewCount: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case productID = "productId"
+        case productName, shortDescription, price, productImage, inStock, reviewRating, reviewCount
+    }
+}
+
+typealias Welcome = [WelcomeClass?]
+

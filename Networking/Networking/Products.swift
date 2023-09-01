@@ -11,6 +11,7 @@ struct Response:Decodable{
     let products: [Product]
 }
 
+
 struct Product: Decodable {
     let id: Int
     let title, description: String
@@ -21,3 +22,5 @@ struct Product: Decodable {
     let thumbnail: String
     let images: [String]
 }
+
+
