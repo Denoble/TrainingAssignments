@@ -18,21 +18,25 @@ class Employee{
     }
    
     private func getInstance() -> Employee {
+        var emp:Employee?
       
         do{
-            try createInstance()
-            print("created")
+            emp = try createInstance()
         }catch{
             print("\(error)")
         }
-        return Employee()
+        guard let _emp = emp else{
+            exit(0)
+        }
+        return _emp
     }
-    private func createInstance() throws {
+    private func createInstance() throws -> Employee {
         if Employee.numberOfCreatedObjects > 2 {
             throw InstantiationError.capacityExhausted
         }
         Employee.numberOfCreatedObjects += 1
-        
+        print("New Employee created")
+        return Employee()
     }
 }
 
