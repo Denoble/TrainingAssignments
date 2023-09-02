@@ -18,6 +18,7 @@
 		2F9F98BA2AA273CB001C0E40 /* CountriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F98B92AA273CB001C0E40 /* CountriesUITestsLaunchTests.swift */; };
 		2F9F98C72AA27416001C0E40 /* ProductParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F98C62AA27416001C0E40 /* ProductParsing.swift */; };
 		2F9F98C92AA275A3001C0E40 /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F9F98C82AA275A3001C0E40 /* Products.json */; };
+		2FE67F1D2AA34CD90079E150 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE67F1C2AA34CD90079E150 /* CountryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2F9F98B92AA273CB001C0E40 /* CountriesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2F9F98C62AA27416001C0E40 /* ProductParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParsing.swift; sourceTree = "<group>"; };
 		2F9F98C82AA275A3001C0E40 /* Products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
+		2FE67F1C2AA34CD90079E150 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				2F9F98A42AA273CB001C0E40 /* Info.plist */,
 				2F9F98C62AA27416001C0E40 /* ProductParsing.swift */,
 				2F9F98C82AA275A3001C0E40 /* Products.json */,
+				2FE67F1C2AA34CD90079E150 /* CountryTableViewCell.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				2F9F989B2AA273C7001C0E40 /* ViewController.swift in Sources */,
 				2F9F98972AA273C7001C0E40 /* AppDelegate.swift in Sources */,
 				2F9F98992AA273C7001C0E40 /* SceneDelegate.swift in Sources */,
+				2FE67F1D2AA34CD90079E150 /* CountryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,12 +6,26 @@
 //
 
 import Foundation
+import UIKit
 
+let path="https://gist.githubusercontent.com/peymano-wmt/32dcb892b06648910ddd40406e37fdab/raw/db25946fd77c5873b0303b858e861ce724e0dcd0/countries.json"
+
+let url = URL(string:path)
 enum NetworkError: Error {
     case invalidResponse
 }
 
-// MARK: - WelcomeClass
+struct ErrorResponse:Error, Decodable {
+    let statusCode: Int
+    let statusMessage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case statusCode = "status_code"
+        case statusMessage = "status_message"
+    }
+}
+
+// MARK: - Product
 struct Product: Decodable {
     let productID, productName, shortDescription: String
     let price: Double
@@ -40,13 +54,13 @@ struct Country: Decodable {
 }
 
 // MARK: - Currency
-struct Currency: Codable {
+struct Currency: Decodable {
     let code, name: String
     let symbol: String?
 }
 
 // MARK: - Language
-struct Language: Codable {
+struct Language: Decodable {
     let code: String?
     let name: String
     let iso6392, nativeName: String?
@@ -58,7 +72,7 @@ struct Language: Codable {
     }
 }
 
-enum Region: String, Codable {
+enum Region: String, Decodable {
     case af = "AF"
     case americas = "Americas"
     case an = "AN"
@@ -70,7 +84,12 @@ enum Region: String, Codable {
     case sa = "SA"
 }
 
+class CountryModel: Decodable{
+   static var countries  = [Country]()
+}
 typealias Countries = [Country]
+
+
 
 
 func fetchData(url:String) async throws -> Data {
@@ -131,5 +150,75 @@ func readLocalFile() -> [Product]{
     }
     print(products)
     return products
+    
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+
+class WebService{
+class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        guard let data = data else {
+            DispatchQueue.main.async {
+                completion(nil, error)
+            }
+            return
+        }
+        let decoder = JSONDecoder()
+        do {
+            let responseObject = try decoder.decode(ResponseType.self, from: data)
+            DispatchQueue.main.async {
+                completion(responseObject, nil)
+            }
+        } catch {
+            do {
+                let errorResponse = try decoder.decode(ErrorResponse.self, from: data) as Error
+                DispatchQueue.main.async {
+                    completion(nil, errorResponse)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    task.resume()
+    
+    return task
+}
+    class func getCountries(completion: @escaping ([Country], Error?) -> Void) {
+        guard let _url = url else{return}
+        taskForGETRequest(url: _url, responseType: Countries.self) { response, error in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion([], error)
+            }
+        }
+    }
+    
+    class func downloadImage(path: String, completion: @escaping (Data?, Error?) -> Void) {
+        guard let url = URL(string: path)else{return}
+        print(url.path)
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        }
+        task.resume()
+    }
     
 }

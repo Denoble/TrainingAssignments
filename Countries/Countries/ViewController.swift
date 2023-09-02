@@ -7,55 +7,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    let url = "https://gist.githubusercontent.com/peymano-wmt/32dcb892b06648910ddd40406e37fdab/raw/db25946fd77c5873b0303b858e861ce724e0dcd0/countries.json"
+class ViewController: UIViewController, UITableViewDataSource {
     
-    var countries  = [Country]()
-    var products = [Product]()
+    @IBOutlet var tableview: UITableView!
+    //let products = readLocalFile()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
-        products = readLocalFile()
-        countries =  getCountries(url: url)
-        print(" View did appear \(products)")
-    }
-}
-func getCountries(url:String) -> [Country] {
-    var countries = [Country]()
-    
-    guard let url = URL(string:url) else {
-        return countries
-    }
-    var urlRequest =  URLRequest(url: url)
-    
-    urlRequest.httpMethod = "GET"
-    
-   let urlSession = URLSession(configuration: URLSessionConfiguration.default)
-    
-    let dataTask =  urlSession.dataTask(with: urlRequest) { data, response, error in
-        guard let data = data else { return }
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let response =  try? decoder.decode(Countries.self, from: data)
-        guard let res = response else {
-            return
+        WebService.getCountries{ countries,error in
+            CountryModel.countries = countries
+           // print("Printing countries \(countries)")
+            self.tableview.dataSource = self
+            self.tableview.reloadData()
         }
         
-        for country in res {
-            
-            countries.append(country)
-            
-        }
-        print(countries)
-    
     }
-    dataTask.resume()
-    return countries
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return CountryModel.countries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as? CountryTableViewCell ?? CountryTableViewCell()
+    
+        let path = CountryModel.countries[indexPath.item].flag
+        let url = URL(string:path)
+        cell.country.text = CountryModel.countries[indexPath.item].name
+        cell.capital.text = CountryModel.countries[indexPath.item].capital
+        cell.currency.text =  CountryModel.countries[indexPath.item].currency.code
+        
+        return cell
+    }
+       
 }
-
