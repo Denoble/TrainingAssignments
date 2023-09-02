@@ -18,7 +18,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func goToCalculator(_ sender: Any) {
+        performSegue(withIdentifier: "toCalculator", sender: self)
+    }
+    
     @IBAction func onLoginButtonClicked(_ sender: Any) {
         if name.text == admin && password.text == admin {
             performSegue(withIdentifier: "toTableView", sender: self)

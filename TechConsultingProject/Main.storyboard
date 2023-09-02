@@ -40,6 +40,14 @@
                                     <action selector="onLoginButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MmL-AE-Mjr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47v-Hq-Sj3">
+                                <rect key="frame" x="6" y="331" width="129.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="got to calculator"/>
+                                <connections>
+                                    <action selector="goToCalculator:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hd3-EC-JRA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,14 +56,17 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nRB-ea-R5I" secondAttribute="trailing" constant="20" id="8PR-pd-Ksi"/>
                             <constraint firstItem="7Du-qS-Onk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DUx-6h-nwB"/>
                             <constraint firstItem="7Du-qS-Onk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="E7q-x2-hhe"/>
+                            <constraint firstItem="47v-Hq-Sj3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="6" id="ERA-Ki-5hZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lYN-mH-JEo" secondAttribute="trailing" constant="20" id="Eh0-nc-7KQ"/>
                             <constraint firstItem="7Du-qS-Onk" firstAttribute="top" secondItem="a8O-al-MEq" secondAttribute="bottom" constant="20" id="GfU-8D-eKh"/>
+                            <constraint firstItem="nRB-ea-R5I" firstAttribute="bottom" secondItem="47v-Hq-Sj3" secondAttribute="bottom" id="I0q-7i-ppR"/>
                             <constraint firstItem="lYN-mH-JEo" firstAttribute="top" secondItem="7Du-qS-Onk" secondAttribute="bottom" constant="20" id="OAd-MS-jNt"/>
                             <constraint firstItem="7Du-qS-Onk" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="P8m-gI-WOW"/>
                             <constraint firstItem="a8O-al-MEq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PKc-nF-6jV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="a8O-al-MEq" secondAttribute="trailing" constant="20" id="YoM-aR-5uo"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7Du-qS-Onk" secondAttribute="trailing" constant="20" id="elq-8M-Epy"/>
                             <constraint firstItem="lYN-mH-JEo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gsO-9Y-Cyg"/>
+                            <constraint firstItem="nRB-ea-R5I" firstAttribute="top" secondItem="47v-Hq-Sj3" secondAttribute="top" id="vq9-e6-dOR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RGy-k4-55N"/>
@@ -64,11 +75,12 @@
                         <outlet property="name" destination="7Du-qS-Onk" id="GY4-Ff-5XT"/>
                         <outlet property="password" destination="lYN-mH-JEo" id="Etp-4y-9VO"/>
                         <segue destination="B8v-OZ-bcu" kind="show" identifier="toTableView" id="wSZ-yB-4Eo"/>
+                        <segue destination="01J-lp-oVM" kind="showDetail" identifier="toCalculator" id="2Sh-d0-U4X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="661.875" y="-450"/>
+            <point key="canvasLocation" x="634" y="-1106"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="TQq-UM-oPn">
@@ -155,24 +167,24 @@
             <objects>
                 <viewController id="01J-lp-oVM" customClass="CalculatorViewController" customModule="TechConsultingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-SW-sDB">
-                                <rect key="frame" x="20" y="20" width="280" height="440"/>
+                                <rect key="frame" x="20" y="20" width="280" height="420"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C50-BY-cef">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-gP-vLQ">
-                                        <rect key="frame" x="0.0" y="50" width="280" height="70"/>
+                                        <rect key="frame" x="0.0" y="48" width="280" height="66.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1s-9V-KO7">
-                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="C"/>
                                                 <connections>
@@ -180,7 +192,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhZ-d6-HEP">
-                                                <rect key="frame" x="71.5" y="0.0" width="66" height="70"/>
+                                                <rect key="frame" x="71.5" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="+/-"/>
                                                 <connections>
@@ -188,7 +200,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwF-LV-4bf">
-                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="70"/>
+                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="%"/>
                                                 <connections>
@@ -196,7 +208,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9n-jY-7Vj">
-                                                <rect key="frame" x="214" y="0.0" width="66" height="70"/>
+                                                <rect key="frame" x="214" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="➗"/>
                                                 <connections>
@@ -206,10 +218,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0rr-KK-Xrt">
-                                        <rect key="frame" x="0.0" y="124" width="280" height="69.5"/>
+                                        <rect key="frame" x="0.0" y="118.5" width="280" height="66.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzJ-az-rmL">
-                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="7"/>
                                                 <connections>
@@ -217,7 +229,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-sd-xEZ">
-                                                <rect key="frame" x="71.5" y="0.0" width="66" height="69.5"/>
+                                                <rect key="frame" x="71.5" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="8"/>
                                                 <connections>
@@ -225,7 +237,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfK-cM-dex">
-                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="69.5"/>
+                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="9"/>
                                                 <connections>
@@ -233,7 +245,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrS-k7-xQ4">
-                                                <rect key="frame" x="214" y="0.0" width="66" height="69.5"/>
+                                                <rect key="frame" x="214" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="X"/>
                                                 <connections>
@@ -243,10 +255,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-zq-gGe">
-                                        <rect key="frame" x="0.0" y="197.5" width="280" height="70"/>
+                                        <rect key="frame" x="0.0" y="189" width="280" height="67"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WV6-UZ-8Eu">
-                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="67"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="4"/>
                                                 <connections>
@@ -254,7 +266,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zft-qo-eYD">
-                                                <rect key="frame" x="71.5" y="0.0" width="66" height="70"/>
+                                                <rect key="frame" x="71.5" y="0.0" width="66" height="67"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="5"/>
                                                 <connections>
@@ -262,7 +274,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-ej-YH6">
-                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="70"/>
+                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="67"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="6"/>
                                                 <connections>
@@ -270,7 +282,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLb-dh-qAB">
-                                                <rect key="frame" x="214" y="0.0" width="66" height="70"/>
+                                                <rect key="frame" x="214" y="0.0" width="66" height="67"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="-"/>
                                                 <connections>
@@ -280,24 +292,26 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Y0-1N-l0n">
-                                        <rect key="frame" x="0.0" y="271.5" width="280" height="69.5"/>
+                                        <rect key="frame" x="0.0" y="260" width="280" height="66.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-gC-MBN">
-                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="1"/>
                                                 <connections>
                                                     <action selector="button1Onclick:" destination="01J-lp-oVM" eventType="touchUpInside" id="FZc-XS-8iM"/>
-                                                    <action selector="button2Onclick:" destination="01J-lp-oVM" eventType="touchUpInside" id="NmV-Ax-f0O"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bg2-ND-uIO">
-                                                <rect key="frame" x="71.5" y="0.0" width="66" height="69.5"/>
+                                                <rect key="frame" x="71.5" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="2"/>
+                                                <connections>
+                                                    <action selector="button2Onclick:" destination="01J-lp-oVM" eventType="touchUpInside" id="WMM-tF-PzV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-tj-NuZ">
-                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="69.5"/>
+                                                <rect key="frame" x="142.5" y="0.0" width="66.5" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="3"/>
                                                 <connections>
@@ -305,7 +319,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEd-nQ-p0l">
-                                                <rect key="frame" x="214" y="0.0" width="66" height="69.5"/>
+                                                <rect key="frame" x="214" y="0.0" width="66" height="66.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="+"/>
                                                 <connections>
@@ -315,10 +329,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HPe-j9-yZf">
-                                        <rect key="frame" x="0.0" y="345" width="280" height="95"/>
+                                        <rect key="frame" x="0.0" y="330.5" width="280" height="89.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdb-zZ-3eW">
-                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="95"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="89.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="0"/>
                                                 <connections>
@@ -326,10 +340,10 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9GB-Ew-GGc">
-                                                <rect key="frame" x="93.5" y="0.0" width="186.5" height="95"/>
+                                                <rect key="frame" x="93.5" y="0.0" width="186.5" height="89.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-p0-Wwl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="95"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="89.5"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="."/>
                                                         <connections>
@@ -337,7 +351,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igi-it-b5v">
-                                                        <rect key="frame" x="85" y="0.0" width="101.5" height="95"/>
+                                                        <rect key="frame" x="85" y="0.0" width="101.5" height="89.5"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="="/>
                                                         <connections>
@@ -361,16 +375,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button4" destination="WV6-UZ-8Eu" id="8fD-YV-KHc"/>
-                        <outlet property="button5" destination="zft-qo-eYD" id="Zbn-Z5-TLx"/>
-                        <outlet property="button7" destination="JzJ-az-rmL" id="10R-Rx-5Ej"/>
-                        <outlet property="button8" destination="AHO-sd-xEZ" id="V23-yq-c0d"/>
-                        <outlet property="button9" destination="RfK-cM-dex" id="dzU-Bu-eQ4"/>
-                        <outlet property="buttonC" destination="B1s-9V-KO7" id="yTA-dM-uhA"/>
-                        <outlet property="buttonDivision" destination="Y9n-jY-7Vj" id="Kmn-9e-roU"/>
-                        <outlet property="buttonMultiple" destination="FrS-k7-xQ4" id="LGj-og-CLl"/>
-                        <outlet property="buttonNumberSign" destination="Y9n-jY-7Vj" id="Vkh-v7-0od"/>
-                        <outlet property="buttonPercentage" destination="Y9n-jY-7Vj" id="MTN-lw-VeI"/>
                         <outlet property="display" destination="C50-BY-cef" id="PyX-l9-HEP"/>
                     </connections>
                 </viewController>
@@ -384,7 +388,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yfk-BS-U7Z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzq-RP-yqn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
