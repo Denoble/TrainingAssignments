@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkManagerActions {
-    func refresh(countries: [Country])
+    func refresh(countries: [Country]?,error:Error?)
 }
 
 class NetworkManager{
@@ -32,9 +32,9 @@ class NetworkManager{
               let  countries =  try  jsonDecoder.decode([Country].self, from: data)
                
               // print(countries)
-               self.delegate?.refresh(countries: countries)
+               self.delegate?.refresh(countries: countries,error: nil)
            }catch {
-               print(error.localizedDescription)
+               self.delegate?.refresh(countries: nil, error:error)
            }
         }
         sessionTask.resume()

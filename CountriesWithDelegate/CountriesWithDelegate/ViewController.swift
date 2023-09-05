@@ -38,6 +38,17 @@ class ViewController: UIViewController, UITableViewDataSource,NetworkManagerActi
             self.tableView.reloadData()
         }
     }
+    func refresh(countries: [Country]?, error: Error?) {
+        guard let countries = countries else {
+                print("\(String(describing: error?.localizedDescription))")
+            return
+        }
+        self.countries = countries
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
     
 }
 
