@@ -168,37 +168,37 @@ extension UIImageView {
 }
 
 class WebService{
-class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        guard let data = data else {
-            DispatchQueue.main.async {
-                completion(nil, error)
-            }
-            return
-        }
-        let decoder = JSONDecoder()
-        do {
-            let responseObject = try decoder.decode(ResponseType.self, from: data)
-            DispatchQueue.main.async {
-                completion(responseObject, nil)
-            }
-        } catch {
-            do {
-                let errorResponse = try decoder.decode(ErrorResponse.self, from: data) as Error
-                DispatchQueue.main.async {
-                    completion(nil, errorResponse)
-                }
-            } catch {
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data) as Error
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
             }
         }
+        task.resume()
+        
+        return task
     }
-    task.resume()
-    
-    return task
-}
     class func getCountries(completion: @escaping ([Country], Error?) -> Void) {
         guard let _url = url else{return}
         taskForGETRequest(url: _url, responseType: Countries.self) { response, error in

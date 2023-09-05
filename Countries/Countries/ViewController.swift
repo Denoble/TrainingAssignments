@@ -8,28 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-    
+   
     @IBOutlet var tableview: UITableView!
     //let products = readLocalFile()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.tableview.dataSource = self
         WebService.getCountries{ countries,error in
             CountryModel.countries = countries
-           // print("Printing countries \(countries)")
-            self.tableview.dataSource = self
             self.tableview.reloadData()
         }
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CountryModel.countries.count
+       return CountryModel.countries.count
+     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as? CountryTableViewCell ?? CountryTableViewCell()
-    
         let path = CountryModel.countries[indexPath.item].flag
         let url = URL(string:path)
         cell.country.text = CountryModel.countries[indexPath.item].name
@@ -38,5 +38,4 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-       
 }

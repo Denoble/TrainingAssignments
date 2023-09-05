@@ -13,7 +13,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     var curValue: Int64 = 0
     var isDouble = false
-    var numberCount = 0
+    var result: Int64 = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         isDouble = false
@@ -21,11 +21,13 @@ class CalculatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonNumberSignOnclick(_ sender: Any) {
+       // displayChar(char: "+/-")
     }
     
     @IBAction func buttonCancelOnclick(_ sender: Any) {
         display.text = "0"
         curValue = 0
+        result = 0
     }
     
     @IBAction func buttonDivisionOnclick(_ sender: Any) {
@@ -81,23 +83,81 @@ class CalculatorViewController: UIViewController {
         displayChar(char: "+")
     }
     
+    func displayCurrentValue(cur:Int64) {
+        display.text = String(cur)
+    }
+    
     func displayChar(char:Character){
         if char.isNumber {
-            do{
+            
                 if curValue < 100000000000000000 {
-                    try  curValue = (curValue * 10)
+                   curValue = (curValue * 10)
                 }else{
                     curValue = 0
                 }
-            
-            }catch{
-                print("\(error.localizedDescription)")
-            }
             let num =  Int(String(char))
             curValue = curValue + Int64(((num ?? 0)))
-            display.text = String(curValue)
+            displayCurrentValue(cur: curValue)
             
         } else{
+            switch(char){
+            case "÷" :
+                if(result == 0){
+                    result = curValue
+                    curValue = 0
+                }
+                else{
+                    result =  result/curValue
+                    curValue = 0
+                }
+                displayCurrentValue(cur: result)
+                
+            case "%" :
+                if(result == 0){
+                    result = curValue
+                }
+                else{
+                    result =  ((result/100)*curValue)
+                }
+                curValue = 0
+                displayCurrentValue(cur: result)
+            case "*" :
+                if(result == 0){
+                    result = curValue
+                }
+                else{
+                    result =  result*curValue
+                }
+                curValue = 0
+                displayCurrentValue(cur: result)
+            
+            case "-" :
+                
+                if(result == 0){
+                    result = curValue
+                }
+                else{
+                    result =  result-curValue
+                }
+                curValue = 0
+                displayCurrentValue(cur: result)
+            case "=" :
+                displayCurrentValue(cur: result)
+                result = 0
+            case "+" :
+                if(result == 0){
+                    result = curValue
+                }
+                else{
+                    result =  result+curValue
+                }
+                curValue = 0
+                displayCurrentValue(cur: result)
+                
+            default:
+                print("")
+            }
+            
             
         }
     }
