@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wPp-cf-2Kp">
+                                <rect key="frame" x="6" y="50" width="402" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-Z0-cGh">
-                                <rect key="frame" x="6" y="50" width="402" height="806"/>
+                                <rect key="frame" x="6" y="107" width="402" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countryCell" rowHeight="47" id="6RJ-eQ-F2l" customClass="CountryTableViewCell" customModule="CountriesWithDelegate" customModuleProvider="target">
@@ -68,19 +72,26 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="d2f-Z0-cGh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="1Uc-0K-Lr7"/>
+                            <constraint firstAttribute="trailing" secondItem="wPp-cf-2Kp" secondAttribute="trailing" constant="6" id="2Kz-2n-A83"/>
+                            <constraint firstItem="wPp-cf-2Kp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="3oH-wl-PNx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d2f-Z0-cGh" secondAttribute="trailing" constant="6" id="4HI-hY-kKU"/>
+                            <constraint firstItem="d2f-Z0-cGh" firstAttribute="top" secondItem="wPp-cf-2Kp" secondAttribute="bottom" constant="6" id="MC2-jw-lnF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d2f-Z0-cGh" secondAttribute="bottom" constant="6" id="UsK-PQ-lsP"/>
-                            <constraint firstItem="d2f-Z0-cGh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="XW0-5w-oEg"/>
                             <constraint firstItem="d2f-Z0-cGh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="YjS-c5-Dvo"/>
+                            <constraint firstItem="wPp-cf-2Kp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="dCW-tp-OP5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d2f-Z0-cGh" secondAttribute="bottom" constant="6" id="inI-CA-0W4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d2f-Z0-cGh" secondAttribute="trailing" constant="6" id="xNr-j1-JNR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="wPp-cf-2Kp" id="1CR-DB-dNB"/>
                         <outlet property="tableView" destination="d2f-Z0-cGh" id="vkt-n4-Cyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="58"/>
+            <point key="canvasLocation" x="28.985507246376812" y="57.589285714285708"/>
         </scene>
     </scenes>
     <resources>
