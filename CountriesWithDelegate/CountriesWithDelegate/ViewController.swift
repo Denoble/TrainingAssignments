@@ -68,13 +68,10 @@ extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as? CountryTableViewCell ?? CountryTableViewCell()
         if(!searching){
-            populateView(cell: cell, dataSource:self.countries, index: indexPath.row)
+            populateView(cell: cell, dataSource:self.countries, index: indexPath.item)
         }else{
-            populateView(cell: cell, dataSource:self.filteredCountries, index: indexPath.row)
+            populateView(cell: cell, dataSource:self.filteredCountries, index: indexPath.item)
         }
-        /*cell.country.text = self.countries[indexPath.item].name
-        cell.capital.text = self.countries[indexPath.item].capital
-        cell.currency.text = self.countries[indexPath.item].currency.code*/
         return cell
     }
 }
@@ -83,6 +80,7 @@ extension ViewController : UISearchBarDelegate{
           
         if(searchText.isEmpty){
             filteredCountries = countries
+            searching = false
         }else{
             filteredCountries = countries.filter{$0.name.contains(searchText)}
         }
