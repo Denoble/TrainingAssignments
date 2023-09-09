@@ -36,7 +36,7 @@ class CalculatorViewModel{
             if(needsSecondNumber){
                 result = executeOperations(operation: operationType, firstNumber: firstNumber, secondNumber: num)
                 let temp = String(Int(result))
-                //display(temp)
+                display(String(Int(num)))
             }else{
                 if curValue < 100000000000000000 {
                    curValue = (curValue * 10)
@@ -53,48 +53,39 @@ class CalculatorViewModel{
             case "÷" :
                 executeNonNumericButtonAction(needsSecondNumber: true,
                                               operation: Operation.Division){info in
-                    if self.result == 0.0{
-                        //display(String(Int(self.curValue)))
-                    }else{
-                        //display(String(Int(self.result)))
-                    }
+                    self.firstNumber = self.curValue
+                    self.curValue = 0
                 }
                 
             case "*" :
                 executeNonNumericButtonAction(needsSecondNumber: true,
                                               operation: Operation.Mutiplication){info in
-                    if self.result == 0.0{
-                        //display(String(Int(self.curValue)))
-                    }else{
-                       // display(String(Int(self.result)))
-                    }
+                    
+                        self.firstNumber = self.curValue
+                        self.curValue = 0
+                   
             }
             
             case "-" :
                 
                 executeNonNumericButtonAction(needsSecondNumber: true,
                                               operation: Operation.Subtraction){info in
-                    if self.result == 0.0{
-                        //display(String(Int(self.curValue)))
-                    }else{
-                        //display(String(Int(self.result)))
-                    }
+                    self.firstNumber = self.curValue
+                    self.curValue = 0
                 }
             case "=" :
                 if result == 0.0 {
                     display(String(Int(curValue)))
                 }
                 else{
-                        display(String(result))
-                        }
+                    display(String(result))
+                    self.curValue = 0
+                }
             case "+" :
                 executeNonNumericButtonAction(needsSecondNumber: true,
                                               operation: Operation.Addition){info in
-                    if self.result == 0.0{
-                        //display(String(Int(self.curValue)))
-                    }else{
-                        //display(String(Int(self.result)))
-                    }
+                    self.firstNumber = self.curValue
+                    self.curValue = 0
                 }
             default:
                 print("")
