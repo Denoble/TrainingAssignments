@@ -188,6 +188,7 @@
                         <outlet property="critialReadingAvgScore" destination="aCz-Jz-26p" id="H6U-K3-4Kp"/>
                         <outlet property="mathAvgScore" destination="1d3-ou-CwR" id="f0b-Sq-JP3"/>
                         <outlet property="satAvgWritingScore" destination="iM9-F5-nHf" id="tir-Jt-4uK"/>
+                        <outlet property="schoolName" destination="SqQ-sW-Qa9" id="N6t-Jf-yxd"/>
                         <outlet property="testTakerNum" destination="NBg-mF-ybG" id="UBh-Pm-Bo2"/>
                     </connections>
                 </viewController>

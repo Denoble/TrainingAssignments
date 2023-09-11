@@ -8,10 +8,9 @@
 import UIKit
 
 class SatViewController: UIViewController {
+    @IBOutlet weak var schoolName: UILabel!
     @IBOutlet weak var satAvgScore: UILabel!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var numofSatTestTaken: UILabel!
-    
+    var namePlaceHolder = ""
     @IBOutlet weak var satAvgWritingScore: UILabel!
     @IBOutlet weak var mathAvgScore: UILabel!
     @IBOutlet weak var critialReadingAvgScore: UILabel!
@@ -19,6 +18,8 @@ class SatViewController: UIViewController {
     let viewModel = SchoolViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(namePlaceHolder)
+        schoolName.text = namePlaceHolder
 
         // Do any additional setup after loading the view.
     }
