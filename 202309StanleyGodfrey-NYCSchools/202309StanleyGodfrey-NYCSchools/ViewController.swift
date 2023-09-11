@@ -10,18 +10,25 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let viewModel = SchoolViewModel()
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.dataSource = self
-        print("How are you")
+        tableView.delegate = self
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "navigateToSat" {
+            let satViewController = segue.destination as! SatViewController
+            //satViewController.name.text = viewModel.schools[selectedIndex].schoolName
+        }
     }
 
 
 }
 
-extension ViewController:UITableViewDataSource{
+extension ViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getSchools(url: viewModel.url){schools,error in
             guard schools.count > 0 else{
@@ -42,6 +49,13 @@ extension ViewController:UITableViewDataSource{
         cell.location.text = viewModel.schools[indexPath.item].location
         cell.website.text =  viewModel.schools[indexPath.item].website
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        if let viewController = storyboard?.instantiateViewController(identifier: "SatViewController") as? SatViewController {
+                navigationController?.pushViewController(viewController, animated: true)
+            }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

@@ -8,8 +8,11 @@
 import Foundation
 
 class SchoolViewModel{
-    public  var schools :Schools = [School]()
     let url = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
+    let satUrl = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+    public  var schools :Schools = [School]()
+    public  lazy var schoolSats = [SchoolSat]()
+    
     func getSchools(url:String,completionHandler: @escaping ([School], Error?) -> Void) {
         guard let _url = URL(string: url) else{return}
         NetworkManager.taskForGETRequest(url: _url, responseType: Schools.self) { result in
@@ -21,7 +24,22 @@ class SchoolViewModel{
             
         }
     }
-}
+    func getSats(url:String,completionHandler: @escaping ([SchoolSat], Error?) -> Void){
+        guard let _url = URL(string: url) else{return}
+        NetworkManager.taskForGETRequest(url: _url, responseType: SchoolSats.self) { result in
+            switch result {
+            case .success(let schoolSats): completionHandler(schoolSats, nil)
+            case .failure(let error): completionHandler([],error)
+            default:  break
+            }
+            
+        }
+    }
+    func getSat(schoolName:String)->SchoolSat?{
+        return schoolSats.first { $0.schoolName == schoolName }
+        }
+    }
+
         
 class NetworkManager {
     
@@ -49,17 +67,6 @@ class NetworkManager {
         task.resume()
         
         return task
-    }
-    class func getSchools(url:String,completionHandler: @escaping ([School], Error?) -> Void) {
-        guard let _url = URL(string: url) else{return}
-        taskForGETRequest(url: _url, responseType: Schools.self) { result in
-            switch result {
-            case .success(let schools): completionHandler(schools, nil)
-            case .failure(let error): completionHandler([],error)
-            default:  break
-            }
-        }
-        
     }
 }
         

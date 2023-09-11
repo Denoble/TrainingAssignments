@@ -19,6 +19,7 @@
 		2F8B589D2AAE5A21008E0C1C /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B589C2AAE5A21008E0C1C /* SchoolModel.swift */; };
 		2F8B589F2AAE5E4F008E0C1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B589E2AAE5E4F008E0C1C /* ViewModel.swift */; };
 		2F8B58A32AAE5ED7008E0C1C /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B58A22AAE5ED7008E0C1C /* SchoolTableViewCell.swift */; };
+		2F8B58A52AAEBD9E008E0C1C /* SatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B58A42AAEBD9E008E0C1C /* SatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		2F8B589C2AAE5A21008E0C1C /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 		2F8B589E2AAE5E4F008E0C1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2F8B58A22AAE5ED7008E0C1C /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
+		2F8B58A42AAEBD9E008E0C1C /* SatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				2F8B589C2AAE5A21008E0C1C /* SchoolModel.swift */,
 				2F8B589E2AAE5E4F008E0C1C /* ViewModel.swift */,
 				2F8B58A22AAE5ED7008E0C1C /* SchoolTableViewCell.swift */,
+				2F8B58A42AAEBD9E008E0C1C /* SatViewController.swift */,
 			);
 			path = "202309StanleyGodfrey-NYCSchools";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				2F8B58A32AAE5ED7008E0C1C /* SchoolTableViewCell.swift in Sources */,
 				2F8B589D2AAE5A21008E0C1C /* SchoolModel.swift in Sources */,
 				2F8B586D2AAE51C0008E0C1C /* AppDelegate.swift in Sources */,
+				2F8B58A52AAEBD9E008E0C1C /* SatViewController.swift in Sources */,
 				2F8B586F2AAE51C0008E0C1C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
