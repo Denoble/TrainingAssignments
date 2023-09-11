@@ -8,20 +8,40 @@
 import UIKit
 
 class SatViewController: UIViewController {
+    var dbnPlaceHolder = ""
+   var  namePlaceHolder = ""
     @IBOutlet weak var schoolName: UILabel!
-    @IBOutlet weak var satAvgScore: UILabel!
-    var namePlaceHolder = ""
-    @IBOutlet weak var satAvgWritingScore: UILabel!
-    @IBOutlet weak var mathAvgScore: UILabel!
-    @IBOutlet weak var critialReadingAvgScore: UILabel!
-    @IBOutlet weak var testTakerNum: UILabel!
+    @IBOutlet weak var numOfTestTaker: UILabel!
+    @IBOutlet weak var mathAverage: UILabel!
+    
+    @IBOutlet weak var criticalAveScore: UILabel!
     let viewModel = SchoolViewModel()
+    @IBOutlet weak var writingAveScore: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(namePlaceHolder)
-        schoolName.text = namePlaceHolder
+        self.schoolName.text = self.dbnPlaceHolder
+        self.schoolName.text = self.namePlaceHolder
+        viewModel.getSats(url: viewModel.satUrl){ schoolSats,error in
+            self.viewModel.schoolSats = schoolSats
+            let sat = self.viewModel.getSat(dbn: self.dbnPlaceHolder)
+            print(sat)
+            DispatchQueue.main.async{
+                self.populateControls(satData: sat)
+            }
+        }
+        print(dbnPlaceHolder)
+        
 
         // Do any additional setup after loading the view.
+    }
+    func populateControls(satData:SchoolSat?){
+        
+      //  satAvgScore.text = satData?.satMathAvgScore
+        self.writingAveScore.text = satData?.satWritingAvgScore
+        self.numOfTestTaker.text = satData?.numOfSatTestTakers
+        self.criticalAveScore.text = satData?.satCriticalReadingAvgScore
+        self.mathAverage.text = satData?.satMathAvgScore
     }
     
 

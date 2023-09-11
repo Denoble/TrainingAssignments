@@ -35,10 +35,10 @@ class SchoolViewModel{
             
         }
     }
-    func getSat(schoolName:String)->SchoolSat?{
-        return schoolSats.first { $0.schoolName == schoolName }
-        }
+    func getSat(dbn:String)->SchoolSat?{
+        return self.schoolSats.first(where: { ($0.dbn ?? " ") == dbn  })
     }
+}
 
         
 class NetworkManager {
@@ -59,7 +59,7 @@ class NetworkManager {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    //show error as alertDialog m
+                    //show error as alertDialog
                     print(error.localizedDescription)
                 }
             }
@@ -69,4 +69,5 @@ class NetworkManager {
         return task
     }
 }
+    
         

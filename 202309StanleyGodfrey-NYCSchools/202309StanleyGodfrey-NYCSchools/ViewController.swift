@@ -11,7 +11,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let viewModel = SchoolViewModel()
     var selectedIndex = 0
-    var schoolName = ""
+    var schooldbn = ""
+    var schoolname = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ class ViewController: UIViewController {
             //satViewController.name.text = viewModel.schools[selectedIndex].schoolName
         }
     }
-
 
 }
 
@@ -53,16 +53,14 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
-        self.schoolName = viewModel.schools[selectedIndex].schoolName ?? ""
-        if let viewController = storyboard?.instantiateViewController(identifier: "SatViewController") as? SatViewController {
-            
-            viewController.namePlaceHolder = schoolName
+        self.schooldbn = viewModel.schools[selectedIndex].dbn ?? ""
+        self.schoolname = viewModel.schools[selectedIndex].schoolName ?? ""
+        if let viewController = storyboard?.instantiateViewController(identifier: "satViewController") as? SatViewController {
+            viewController.namePlaceHolder = self.schoolname
+            viewController.dbnPlaceHolder = self.schooldbn
                 
             navigationController?.pushViewController(viewController, animated: true)
             }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
 }
-
