@@ -45,10 +45,17 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "schoolCell", for: indexPath) as? SchoolTableViewCell ?? SchoolTableViewCell()
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: "schoolCell", for: indexPath) as? SchoolTableViewCell else{return UITableViewCell()}
+        
         cell.name .text = viewModel.schools[indexPath.item].schoolName
         cell.location.text = viewModel.schools[indexPath.item].location
         cell.website.text =  viewModel.schools[indexPath.item].website
+        cell.didDelete = {
+            self.viewModel.schools.remove(at:indexPath.item)
+            var tempSchool = self.viewModel.schools
+            self.viewModel.schools = tempSchool
+            self.tableView.reloadData()
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
