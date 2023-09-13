@@ -21,20 +21,20 @@ final class _02309StanleyGodfrey_NYCSchoolsTests: XCTestCase {
         try super.tearDownWithError()
         viewModel =  nil
     }
-    func testSchoolsAPICall(){
-        viewModel.schools
+    func testSchoolsAPICall() async{
+        let expectedOutput =  true
         /// When the Data initializer is throwing an error, the test will fail.
-           let jsonData = try Data(contentsOf: URL(string: "user.json")!)
+       try await viewModel.getSchools(url: viewModel.url.schoolUrl)
+        let actualOutput = {self.viewModel.schools.count > 0}
 
-           /// The `XCTAssertNoThrow` can be used to get extra context about the throw
-           XCTAssertNoThrow(try JSONDecoder().decode(User.self, from: jsonData))
+        XCTAssertEqual(expectedOutput, actualOutput())
     }
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testSatsAPICall() async {
+        let expectedOutput = true
+        try await viewModel.getSats(url: self.viewModel.url.satUrl)
+        let actualOutput = {self.viewModel.schoolSats.count > 0}
+        XCTAssertEqual(expectedOutput,actualOutput())
     }
 
     func testPerformanceExample() throws {
