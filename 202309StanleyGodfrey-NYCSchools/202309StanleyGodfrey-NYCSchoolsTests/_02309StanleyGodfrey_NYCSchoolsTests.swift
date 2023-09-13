@@ -37,11 +37,13 @@ final class _02309StanleyGodfrey_NYCSchoolsTests: XCTestCase {
         XCTAssertEqual(expectedOutput,actualOutput())
     }
 
-    func testPerformanceExample() throws {
+    func testFilterSatArray() async {
         // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+         let satDbn = "01M448"
+         let expectedSchoolName = "UNIVERSITY NEIGHBORHOOD HIGH SCHOOL"
+        try await viewModel.getSats(url: self.viewModel.url.satUrl)
+        let sat =  viewModel.getSat(dbn: satDbn)
+        XCTAssertEqual(sat?.schoolName,expectedSchoolName)
     }
 
 }

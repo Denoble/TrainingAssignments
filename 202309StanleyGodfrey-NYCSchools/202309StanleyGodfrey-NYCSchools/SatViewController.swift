@@ -42,9 +42,10 @@ class SatViewController: UIViewController {
         do{
             try await viewModel.getSats(url: viewModel.url.satUrl)
             let sat = self.viewModel.getSat(dbn: self.dbnPlaceHolder)
-           //print(viewModel.schoolSats)
             DispatchQueue.main.async{
                 self.updateUI(satData: sat)
+                print(self.viewModel.schoolSats)
+                
             }
         }catch{
             print(error.localizedDescription)

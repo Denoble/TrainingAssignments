@@ -36,5 +36,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "608B1B19-483A-4BA9-B679-F36D4A073AAB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "202309StanleyGodfrey-NYCSchools/SatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetchSchoolSats(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "608B1B19-483A-4BA9-B679-F36D4A073AAB - ffde0a3b28cce65f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_02309StanleyGodfrey_NYCSchools.SatViewController.fetchSchoolSats(Swift.Array&lt;_02309StanleyGodfrey_NYCSchools.SchoolSat&gt;) async -&gt; ()"
+                  moduleName = "202309StanleyGodfrey-NYCSchools"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/uchegodfrey/Documents/Documents%20-%20Uche%E2%80%99s%20MacBook%20Pro%20(2)/techconsulting/TrainingAssignments/202309StanleyGodfrey-NYCSchools/202309StanleyGodfrey-NYCSchools/SatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "608B1B19-483A-4BA9-B679-F36D4A073AAB - 23cc3c992f44918"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for _02309StanleyGodfrey_NYCSchools.SatViewController.fetchSchoolSats(Swift.Array&lt;_02309StanleyGodfrey_NYCSchools.SchoolSat&gt;) async -&gt; ()"
+                  moduleName = "202309StanleyGodfrey-NYCSchools"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/uchegodfrey/Documents/Documents%20-%20Uche%E2%80%99s%20MacBook%20Pro%20(2)/techconsulting/TrainingAssignments/202309StanleyGodfrey-NYCSchools/202309StanleyGodfrey-NYCSchools/SatViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

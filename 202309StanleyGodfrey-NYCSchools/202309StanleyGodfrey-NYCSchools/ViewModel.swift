@@ -30,8 +30,8 @@ class SchoolViewModel{
         guard let _url = URL(string: url) else{return}
         do{
             self.schoolSats =   try await NetworkManager.taskForGETRequest(url: _url, responseType: SchoolSats.self)
-        }catch {
-            print(error.localizedDescription)
+            print(self.schoolSats)
+        }catch {            print(error.localizedDescription)
         }
     }
     func getSat(dbn:String)->SchoolSat?{
