@@ -7,32 +7,31 @@
 
 import Foundation
 
-class SchoolViewModel{
-    let url = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
+struct UrlStruct{
+    let schoolUrl = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
     let satUrl = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
-    public  var schools :Schools = [School]()
-    public  lazy var schoolSats = [SchoolSat]()
+}
+
+class SchoolViewModel{
+    let url = UrlStruct()
+    var schools = [School]()
+    lazy var schoolSats = [SchoolSat]()
     
-    func getSchools(url:String,completionHandler: @escaping ([School], Error?) -> Void) {
-        guard let _url = URL(string: url) else{return}
-        NetworkManager.taskForGETRequest(url: _url, responseType: Schools.self) { result in
-            switch result {
-            case .success(let schools): completionHandler(schools, nil)
-            case .failure(let error): completionHandler([],error)
-            default:  break
+    func getSchools(url:String) async {
+        guard let _url = URL(string: url) else{ return }
+      
+            do{
+                self.schools = try await NetworkManager.taskForGETRequest(url: _url, responseType: Schools.self)
+            }catch {
+                print(error.localizedDescription)
             }
-            
-        }
     }
-    func getSats(url:String,completionHandler: @escaping ([SchoolSat], Error?) -> Void){
+    func getSats(url:String) async {
         guard let _url = URL(string: url) else{return}
-        NetworkManager.taskForGETRequest(url: _url, responseType: SchoolSats.self) { result in
-            switch result {
-            case .success(let schoolSats): completionHandler(schoolSats, nil)
-            case .failure(let error): completionHandler([],error)
-            default:  break
-            }
-            
+        do{
+            self.schoolSats =   try await NetworkManager.taskForGETRequest(url: _url, responseType: SchoolSats.self)
+        }catch {
+            print(error.localizedDescription)
         }
     }
     func getSat(dbn:String)->SchoolSat?{
@@ -43,31 +42,13 @@ class SchoolViewModel{
         
 class NetworkManager {
     
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (Result<ResponseType, Error>) -> Void) -> URLSessionDataTask {
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(.failure(error!))
-                }
-                return
-            }
-            let decoder = JSONDecoder()
-            do {
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success( responseObject))
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    //show error as alertDialog
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        task.resume()
-        
-        return task
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type) async throws -> ResponseType {
+        let session = URLSession.shared
+        let request = URLRequest(url: url)
+        let (data, response) = try await session.data(for: request)
+        let jsonDecoder = JSONDecoder()
+        let result = try jsonDecoder.decode(ResponseType.self, from: data)
+        return result
     }
 }
     
-        

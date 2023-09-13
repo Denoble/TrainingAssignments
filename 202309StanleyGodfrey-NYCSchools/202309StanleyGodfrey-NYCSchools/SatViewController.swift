@@ -18,24 +18,19 @@ class SatViewController: UIViewController {
     let viewModel = SchoolViewModel()
     @IBOutlet weak var writingAveScore: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.schoolName.text = self.dbnPlaceHolder
         self.schoolName.text = self.namePlaceHolder
-        viewModel.getSats(url: viewModel.satUrl){ schoolSats,error in
-            self.viewModel.schoolSats = schoolSats
-            let sat = self.viewModel.getSat(dbn: self.dbnPlaceHolder)
-            print(sat)
-            DispatchQueue.main.async{
-                self.populateControls(satData: sat)
-            }
+        Task{
+            await fetchSchoolSats(self.viewModel.schoolSats)
         }
-        print(dbnPlaceHolder)
         
 
         // Do any additional setup after loading the view.
     }
-    func populateControls(satData:SchoolSat?){
+    func updateUI(satData:SchoolSat?){
         
       //  satAvgScore.text = satData?.satMathAvgScore
         self.writingAveScore.text = satData?.satWritingAvgScore
@@ -43,6 +38,20 @@ class SatViewController: UIViewController {
         self.criticalAveScore.text = satData?.satCriticalReadingAvgScore
         self.mathAverage.text = satData?.satMathAvgScore
     }
+    private func fetchSchoolSats(_ sats:[SchoolSat]) async {
+        do{
+            try await viewModel.getSats(url: viewModel.url.satUrl)
+            let sat = self.viewModel.getSat(dbn: self.dbnPlaceHolder)
+           //print(viewModel.schoolSats)
+            DispatchQueue.main.async{
+                self.updateUI(satData: sat)
+            }
+        }catch{
+            print(error.localizedDescription)
+        }
+        print(dbnPlaceHolder)
+    }
+    
     
 
     /*

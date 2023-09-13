@@ -19,6 +19,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        Task {
+            await self.viewModel.getSchools(url: self.viewModel.url.schoolUrl)
+            self.tableView.reloadData()
+        }
+   
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "navigateToSat" {
@@ -30,17 +35,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController:UITableViewDataSource,UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getSchools(url: viewModel.url){schools,error in
-            guard schools.count > 0 else{
-                //Show error Alert
-                return
-            }
-            self.viewModel.schools = schools
-            self.tableView.reloadData()
-        }
-        let rows = self.viewModel.schools.count
-        return self.viewModel.schools.count
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
+        
+        return viewModel.schools.count
     
     }
     
