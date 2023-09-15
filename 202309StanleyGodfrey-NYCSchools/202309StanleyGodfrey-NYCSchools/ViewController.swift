@@ -9,21 +9,27 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = SchoolViewModel()
+    let networkManager =  NetworkManager()
+    let urlStruct = UrlStruct()
+    var viewModel:SchoolViewModel?
     var selectedIndex = 0
     var schooldbn = ""
     var schoolname = ""
+  
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+      viewModel =  SchoolViewModel(networkManager: networkManager, urlStruct: urlStruct)
+        guard let localViewModel = viewModel else{return}
         Task {
-            await self.viewModel.getSchools(url: self.viewModel.url.schoolUrl)
+            await localViewModel.getSchools(url: localViewModel.url.schoolUrl)
             self.tableView.reloadData()
         }
-   
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "navigateToSat" {
@@ -37,35 +43,38 @@ class ViewController: UIViewController {
 extension ViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
-        
-        return viewModel.schools.count
+        guard let localViewModel = viewModel else{ return 0}
+        return localViewModel.schools.count
     
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: "schoolCell", for: indexPath) as? SchoolTableViewCell else{return UITableViewCell()}
-        
-        cell.name .text = viewModel.schools[indexPath.item].schoolName
-        cell.location.text = viewModel.schools[indexPath.item].location
-        cell.website.text =  viewModel.schools[indexPath.item].website
-        cell.didDelete = {
-            self.viewModel.schools.remove(at:indexPath.item)
-            var tempSchool = self.viewModel.schools
-            self.viewModel.schools = tempSchool
-            self.tableView.reloadData()
-        }
+        guard let localViewModel = viewModel else{return UITableViewCell()}
+            cell.name .text = localViewModel.schools[indexPath.item].schoolName
+            cell.location.text = localViewModel.schools[indexPath.item].location
+            cell.website.text =  localViewModel.schools[indexPath.item].website
+            cell.didDelete = {
+                localViewModel.schools.remove(at:indexPath.item)
+                var tempSchool = localViewModel.schools
+                localViewModel.schools = tempSchool
+                self.tableView.reloadData()
+            }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
-        self.schooldbn = viewModel.schools[selectedIndex].dbn ?? ""
-        self.schoolname = viewModel.schools[selectedIndex].schoolName ?? ""
+        guard let localViewModel = viewModel else{return}
+        self.schooldbn = localViewModel.schools[selectedIndex].dbn ?? ""
+        self.schoolname = localViewModel.schools[selectedIndex].schoolName ?? ""
         if let viewController = storyboard?.instantiateViewController(identifier: "satViewController") as? SatViewController {
             viewController.namePlaceHolder = self.schoolname
             viewController.dbnPlaceHolder = self.schooldbn
-                
+            
             navigationController?.pushViewController(viewController, animated: true)
-            }
+        }
         tableView.deselectRow(at: indexPath, animated: true)
+            
+        
     }
 }

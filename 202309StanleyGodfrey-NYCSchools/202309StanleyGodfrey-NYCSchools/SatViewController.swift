@@ -9,23 +9,29 @@ import UIKit
 
 class SatViewController: UIViewController {
     var dbnPlaceHolder = ""
-   var  namePlaceHolder = ""
+    var  namePlaceHolder = ""
     @IBOutlet weak var schoolName: UILabel!
     @IBOutlet weak var numOfTestTaker: UILabel!
     @IBOutlet weak var mathAverage: UILabel!
     
     @IBOutlet weak var criticalAveScore: UILabel!
-    let viewModel = SchoolViewModel()
+    let  networkManager = NetworkManager()
+    let urlStruct =  UrlStruct()
+    var viewModel : SchoolViewModel?
     @IBOutlet weak var writingAveScore: UILabel!
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.schoolName.text = self.dbnPlaceHolder
         self.schoolName.text = self.namePlaceHolder
-        Task{
-            await fetchSchoolSats(self.viewModel.schoolSats)
+        viewModel = SchoolViewModel(networkManager: networkManager,urlStruct: urlStruct)
+        guard let localViewModel = viewModel else {
+            return
         }
+        Task{
+                await fetchSchoolSats(localViewModel.schoolSats)
+            }
         
 
         // Do any additional setup after loading the view.
@@ -39,12 +45,13 @@ class SatViewController: UIViewController {
         self.mathAverage.text = satData?.satMathAvgScore
     }
     private func fetchSchoolSats(_ sats:[SchoolSat]) async {
+        guard let localViewModel = viewModel else{return}
         do{
-            try await viewModel.getSats(url: viewModel.url.satUrl)
-            let sat = self.viewModel.getSat(dbn: self.dbnPlaceHolder)
+            try await localViewModel.getSats(url: localViewModel.url.satUrl)
+            let sat = localViewModel.getSat(dbn: self.dbnPlaceHolder)
             DispatchQueue.main.async{
                 self.updateUI(satData: sat)
-                print(self.viewModel.schoolSats)
+                print(localViewModel.schoolSats)
                 
             }
         }catch{

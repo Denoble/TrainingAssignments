@@ -10,10 +10,12 @@ import XCTest
 
 final class _02309StanleyGodfrey_NYCSchoolsTests: XCTestCase {
     var viewModel:SchoolViewModel!
+    let networkManager =  NetworkManager()
+    let urlStruct = UrlStruct()
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
-        viewModel = SchoolViewModel()
+        viewModel = SchoolViewModel(networkManager: networkManager,urlStruct: urlStruct)
     }
 
     override func tearDownWithError() throws {

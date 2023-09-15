@@ -13,6 +13,12 @@ struct UrlStruct{
 }
 
 class SchoolViewModel{
+    let networkManager:NetworkManagerHelper
+    let urlStruct:UrlStruct
+    init(networkManager: NetworkManagerHelper, urlStruct: UrlStruct) {
+        self.networkManager = networkManager
+        self.urlStruct = urlStruct
+    }
     let url = UrlStruct()
     var schools = [School]()
     lazy var schoolSats = [SchoolSat]()
@@ -21,7 +27,7 @@ class SchoolViewModel{
         guard let _url = URL(string: url) else{ return }
       
             do{
-                self.schools = try await NetworkManager.taskForGETRequest(url: _url, responseType: Schools.self)
+                self.schools = try await self.networkManager.taskForGETRequest(url: _url, responseType: Schools.self)
             }catch {
                 print(error.localizedDescription)
             }
@@ -29,7 +35,7 @@ class SchoolViewModel{
     func getSats(url:String) async {
         guard let _url = URL(string: url) else{return}
         do{
-            self.schoolSats =   try await NetworkManager.taskForGETRequest(url: _url, responseType: SchoolSats.self)
+            self.schoolSats =   try await self.networkManager .taskForGETRequest(url: _url, responseType: SchoolSats.self)
             print(self.schoolSats)
         }catch {            print(error.localizedDescription)
         }
@@ -40,9 +46,9 @@ class SchoolViewModel{
 }
 
         
-class NetworkManager {
+class NetworkManager : NetworkManagerHelper {
     
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type) async throws -> ResponseType {
+        func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type) async throws -> ResponseType {
         let session = URLSession.shared
         let request = URLRequest(url: url)
         let (data, response) = try await session.data(for: request)
@@ -51,4 +57,7 @@ class NetworkManager {
         return result
     }
 }
-    
+
+protocol NetworkManagerHelper{
+    func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type) async throws -> ResponseType
+}
